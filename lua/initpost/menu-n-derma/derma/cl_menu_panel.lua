@@ -1,8 +1,8 @@
 local PANEL = {}
-local curent_panel 
+local curent_panel
 local red_select = Color(192,0,0)
 
-DISCORD_URL = "https://discord.gg/475EmEdTgH"
+DISCORD_URL = "https://discord.gg/dKVKN7r3CZ"
 
 local Selects = {
     {Title = "Disconnect", Func = function(luaMenu) RunConsoleCommand("disconnect") end},
@@ -29,12 +29,12 @@ local Selects = {
             luaMenu:Close()
             hg.SelectPlayerRole(nil, "soe")
         end
-    
+
         local selfa = self
         function btn:Think()
             self.HoverLerp = selfa.HoverLerp
             self.HoverLerp2 = LerpFT(0.2, self.HoverLerp2 or 0, self:IsHovered() and 1 or 0)
-                
+
             self:SetTextColor(self.RColor:Lerp(self.WColor:Lerp(red_select, self.HoverLerp2), self.HoverLerp))
             self:SetX(self.x + ScreenScaleH(40) + self.HoverLerp * ScreenScaleH(50))
         end
@@ -57,24 +57,24 @@ local Selects = {
             luaMenu:Close()
             hg.SelectPlayerRole(nil, "standard")
         end
-    
+
         function btn:Think()
             self.HoverLerp = selfa.HoverLerp
             self.HoverLerp2 = LerpFT(0.2, self.HoverLerp2 or 0, self:IsHovered() and 1 or 0)
-    
+
             self:SetTextColor(self.RColor:Lerp(self.WColor:Lerp(red_select, self.HoverLerp2), self.HoverLerp))
             self:SetX(self.x + ScreenScaleH(35))
         end
     end,
     Func = function(luaMenu)
-        
+
     end,
     },
-    {Title = "Achievements", Func = function(luaMenu,pp) 
+    {Title = "Achievements", Func = function(luaMenu,pp)
         hg.DrawAchievmentsMenu(pp)
     end},
-    {Title = "Settings", Func = function(luaMenu,pp) 
-        hg.DrawSettings(pp) 
+    {Title = "Settings", Func = function(luaMenu,pp)
+        hg.DrawSettings(pp)
     end},
     {Title = "Appearance", Func = function(luaMenu,pp) hg.CreateApperanceMenu(pp) end},
     {Title = "Return", Func = function(luaMenu) luaMenu:Close() end},
@@ -175,14 +175,14 @@ function PANEL:Init()
 
 
     local bottomDock = vgui.Create("DPanel", self)
-    bottomDock:SetPos(ScreenScale(1), ScrH() - ScrH()/10)
+    bottomDock:SetPos(ScreenScale(1), ScrH() - ScrH() / 10)
     bottomDock:SetSize(ScreenScale(190), ScreenScaleH(40))
     bottomDock.Paint = function(this, w, h) end
     self.panelparrent = vgui.Create("DPanel", self)
-    self.panelparrent:SetPos(bottomDock:GetWide()+bottomDock:GetX(), 0)
-    self.panelparrent:SetSize(ScrW() - bottomDock:GetWide()*1, ScrH())
+    self.panelparrent:SetPos(bottomDock:GetWide() + bottomDock:GetX(), 0)
+    self.panelparrent:SetSize(ScrW() - bottomDock:GetWide() * 1, ScrH())
     self.panelparrent.Paint = function(this, w, h) end
-    
+
     local git = vgui.Create("DLabel", bottomDock)
     git:Dock(BOTTOM)
     git:DockMargin(ScreenScale(10), 0, 0, 0)
